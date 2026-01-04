@@ -9,27 +9,27 @@ stages:
   jobs:
   - job: FirstJob
     steps:
-    - powershell: |
-        Write-Host "Build FirstJob"
+    - powershell: echo Build FirstJob
   - job: SecondJob
     steps:
-    - powershell: |
-        Write-Host "Build SecondJob"
+    - powershell: ech Build SecondJob
 - stage: DevDeploy
+  dependsOn: Build
   jobs:
   - job: DevDeployJob
     steps:
-    - powershell: |
-        Write-Host "Build DevDeployJob"
+    - powershell: echo Build DevDeployJob
 - stage: QADeploy
+  dependsOn: Build
   jobs:
   - job: QADeployJob
     steps:
-    - powershell: |
-        Write-Host "Build QADeployJob"
+    - powershell: echo "Build QADeployJob"
 - stage: ProdDeploy
+  dependsOn:
+  - DevDeploy
+  - QADeploy
   jobs:
   - job: ProdDeployJob
     steps:
-    - powershell: |
-        Write-Host "Build ProdDeployJob"
+    - powershell: echo Build ProdDeployJob
