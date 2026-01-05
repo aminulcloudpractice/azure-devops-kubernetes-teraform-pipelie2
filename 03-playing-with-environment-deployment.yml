@@ -11,7 +11,6 @@ trigger:
 pool:
   name: SelfHostedPool
 
-
 stages:
 - stage: Build
   jobs:
@@ -20,7 +19,7 @@ stages:
     - powershell: echo Do the build
 - stage: DevDeploy
   jobs:
-  - deployment: DevDeployJob
+  - deployment: DevDeployJobx
     environment: Dev
     strategy:
      runOnce:
@@ -29,7 +28,7 @@ stages:
            - script: echo deploy to Dev
 - stage: QADeploy
   jobs:
-  - deployment: DevDeployJob
+  - deployment: QADeployJob
     environment: QA
     strategy:
      runOnce:
