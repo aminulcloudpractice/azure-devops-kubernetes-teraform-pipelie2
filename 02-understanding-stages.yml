@@ -16,7 +16,7 @@ stages:
     - powershell: echo $(Build.SourceBranchName)
     - powershell: echo $(Build.SourcesDirectory)
     - powershell: echo $(System.DefaultWorkingDirectory)
-    - powershell: ls -Recurse $(System.ArtifactStagingDirectory)
+    - powershell: ls -Recurse $(System.DefaultWorkingDirectory)
     - powershell: echo $(Build.ArtifactStagingDirectory)
   # - job: SecondJob
   #   steps:
