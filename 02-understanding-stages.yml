@@ -14,7 +14,7 @@ stages:
     - powershell: echo $(Build.BuildNumber)
     - powershell: echo $(Build.BuildId)
     - powershell: echo $(Build.SourceBranchName)
-    - powershell: echo $(Build.SourceDirectory)
+    - powershell: echo $(Build.SourcesDirectory)
     - powershell: echo $(System.DefaultWorkingDirectory)
     - powershell: ls -Recurse $(System.ArtifactStagingDirectory)
     - powershell: echo $(Build.ArtifactStagingDirectory)
