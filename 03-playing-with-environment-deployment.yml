@@ -19,7 +19,7 @@ stages:
     - powershell: echo Do the build
 - stage: DevDeploy
   jobs:
-  - deployment: DevDeployJobx
+  - deployment: DevDeployJob
     environment: Dev
     strategy:
      runOnce:
