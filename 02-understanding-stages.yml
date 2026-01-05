@@ -18,6 +18,19 @@ stages:
     - powershell: echo $(System.DefaultWorkingDirectory)
     - powershell: ls -Recurse $(System.DefaultWorkingDirectory)
     - powershell: echo $(Build.ArtifactStagingDirectory)
+    - powershell: echo java -version
+    - powershell: echo node --version
+    - powershell: echo python -version
+    - powershell: echo mvn -version
+    - powershell: echo $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory'
+        Contents: |
+          **/*.yaml
+          **/*.tf
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - powershell: echo $(Build.ArtifactStagingDirectory)
   # - job: SecondJob
   #   steps:
   #   - powershell: echo Build SecondJob
