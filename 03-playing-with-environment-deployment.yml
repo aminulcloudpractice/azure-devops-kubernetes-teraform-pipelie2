@@ -9,7 +9,7 @@ strategy:
       operatingSystem: 'macos-latest'
 
 pool:
-  vmImage: $(operatingSystem)
+  name: SelfHostedPool
 
 steps:
 - script: echo Hello, world!
