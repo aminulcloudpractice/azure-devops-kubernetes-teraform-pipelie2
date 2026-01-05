@@ -11,30 +11,37 @@ stages:
     steps:
     - powershell: echo Build FirstJob
     - powershell: echo $(PipeLineLevelVariable)
-  - job: SecondJob
-    steps:
-    - powershell: echo Build SecondJob
-- stage: DevDeploy
-  variables:
-    environment: Dev
-  dependsOn: Build
-  jobs:
-  - job: DevDeployJob
-    steps:
-    - powershell: echo $(environment)DeployJob
-- stage: QADeploy
-  variables:
-    environment: QA
-  dependsOn: Build
-  jobs:
-  - job: QADeployJob
-    steps:
-    - powershell: echo $(environment)DeployJob
-- stage: ProdDeploy
-  dependsOn:
-  - DevDeploy
-  - QADeploy
-  jobs:
-  - job: ProdDeployJob
-    steps:
-    - powershell: echo Build ProdDeployJob
+    - powershell: echo $(Build.BuildNumber)
+    - powershell: echo $(Build.BuildId)
+    - powershell: echo $(Build.SourceBranchName)
+    - powershell: echo $(Build.SourceDirectory)
+    - powershell: echo $(System.DefaultWorkingDirectory)
+    - powershell: ls -Recurse $(System.ArtifactStagingDirectory)
+    - powershell: echo $(Build.ArtifactStagingDirectory)
+  # - job: SecondJob
+  #   steps:
+  #   - powershell: echo Build SecondJob
+# - stage: DevDeploy
+#   variables:
+#     environment: Dev
+#   dependsOn: Build
+#   jobs:
+#   - job: DevDeployJob
+#     steps:
+#     - powershell: echo $(environment)DeployJob
+# - stage: QADeploy
+#   variables:
+#     environment: QA
+#   dependsOn: Build
+#   jobs:
+#   - job: QADeployJob
+#     steps:
+#     - powershell: echo $(environment)DeployJob
+# - stage: ProdDeploy
+#   dependsOn:
+#   - DevDeploy
+#   - QADeploy
+#   jobs:
+#   - job: ProdDeployJob
+#     steps:
+#     - powershell: echo ProdDeployJob
