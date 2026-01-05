@@ -4,12 +4,12 @@ trigger:
 strategy:
   matrix:
     linux:
-      operatingSystem: 'ubuntu-latest'
+      operatingSystem: 'SelfHostedPool'
     mac:
-      operatingSystem: 'macos-latest'
+      operatingSystem: 'SelfHostedPool'
 
 pool:
-  name: SelfHostedPool
+  name: $(operatingSystem)
 
 steps:
 - script: echo Hello, world!
