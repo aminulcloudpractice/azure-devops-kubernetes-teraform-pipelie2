@@ -10,21 +10,26 @@ stages:
   - job: FirstJob
     steps:
     - powershell: echo Build FirstJob
+    - powershell: echo $(PipeLineLevelVariable)
   - job: SecondJob
     steps:
     - powershell: echo Build SecondJob
 - stage: DevDeploy
+  variables:
+    environment: Dev
   dependsOn: Build
   jobs:
   - job: DevDeployJob
     steps:
-    - powershell: echo Build DevDeployJob
+    - powershell: echo $(environment)DeployJob
 - stage: QADeploy
+  variables:
+    environment: QA
   dependsOn: Build
   jobs:
   - job: QADeployJob
     steps:
-    - powershell: echo "Build QADeployJob"
+    - powershell: echo $(environment)DeployJob
 - stage: ProdDeploy
   dependsOn:
   - DevDeploy
