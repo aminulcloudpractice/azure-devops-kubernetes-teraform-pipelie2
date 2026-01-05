@@ -30,7 +30,12 @@ stages:
           **/*.yaml
           **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    - powershell: echo $(Build.ArtifactStagingDirectory)
+    - powershell: ls -Recurse $(Build.ArtifactStagingDirectory)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
   # - job: SecondJob
   #   steps:
   #   - powershell: echo Build SecondJob
