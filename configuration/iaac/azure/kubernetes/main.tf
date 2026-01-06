@@ -26,7 +26,7 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
     name            = "agentpool"
     node_count      = var.node_count
     # vm_size         = "standard_b2ms"
-    vm_size         = "standard_d2as_v6"
+    vm_size         = "Standard_B2s_v2"
   }
 
   service_principal {
